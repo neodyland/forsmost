@@ -225,7 +225,7 @@ mod tests {
         let (foremost_name, foremost_bytes) = only_output_file(&foremost_files);
         assert_eq!(rust_name, "mdb/00000000.mdb");
         assert_eq!(rust_bytes, sample.as_slice());
-        assert_eq!(foremost_name, "ole/00000000.ole");
+        assert_eq!(foremost_name, "mbd/00000000.mbd");
         assert_eq!(foremost_bytes, sample.as_slice());
         assert_eq!(audit_counts(&rust_output), audit_counts(&foremost_output));
 

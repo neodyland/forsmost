@@ -119,7 +119,7 @@ fn cfb_stream_suffix(name: &str) -> Option<&'static str> {
     } else if name.contains("Power") {
         Some("ppt")
     } else if name.contains("Access") || name.contains("AccessObjSiteData") {
-        // Foremost falls back to .ole for Access streams; use the real MDB suffix.
+        // Foremost uses .mbd for Access streams; use the real MDB suffix.
         Some("mdb")
     } else if name.contains("Visio") {
         Some("vis")

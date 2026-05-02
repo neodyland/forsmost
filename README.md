@@ -92,6 +92,32 @@ Disable gzip support and the `flate2` dependency:
 cargo install forsmost --no-default-features
 ```
 
+## Fixes over Foremost 1.5.7
+
+The Rust implementation keeps Foremost-compatible output for the common cases
+covered by the comparison tests, but it also fixes several confirmed Foremost
+1.5.7 recovery bugs. The current verified count is 8 fixes:
+
+- Top-down BMP images are recovered instead of being rejected.
+- JPEG files whose first segment is APP2, such as ICC-profile-first JPEGs, are
+  recovered instead of being rejected by the JFIF-only path.
+- RIFF AVI/WAV output uses the RIFF chunk size correctly and keeps the final
+  8 bytes that Foremost truncates.
+- Access CFB/OLE streams are written with the real `.mdb` suffix instead of
+  Foremost's `.mbd` typo.
+- 4096-byte-sector CFB/OLE files are recovered.
+- Office 2007 ZIP files are classified as `docx`, `pptx`, or `xlsx` even when
+  `[Content_Types].xml` appears after the document-specific local entry.
+- Registry hive recovery is dispatched; Foremost 1.5.7 defines the extractor
+  but does not call it for `reg`.
+- On Windows, recovered binary files are written byte-for-byte. Native Foremost
+  opens recovered files in text mode, which can corrupt images by translating
+  LF bytes to CRLF.
+
+This count covers bugs verified by tests or by the Windows binary-output check.
+The test suite contains additional edge-case coverage, but those cases are not
+counted here unless they are confirmed Foremost 1.5.7 regressions.
+
 ## Development
 
 ```bash
