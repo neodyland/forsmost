@@ -1,0 +1,73 @@
+[package]
+name = "forsmost"
+version = "0.1.0"
+edition = "2024"
+description = "A Rust Foremost-style file carving command-line tool."
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+documentation = "https://docs.rs/forsmost"
+keywords = ["forensics", "file-carving", "recovery", "foremost", "cli"]
+categories = ["command-line-utilities"]
+include = [
+    "/Cargo.lock",
+    "/Cargo.toml",
+    "/LICENSE-APACHE",
+    "/LICENSE-MIT",
+    "/README.md",
+    "/src/**",
+    "/tests/**",
+]
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+flate2 = { version = "1", optional = true }
+
+[features]
+default = ["gzip"]
+gzip = ["dep:flate2"]
+
+[lints.rust]
+ambiguous_negative_literals = "deny"
+let_underscore_drop = "deny"
+missing_debug_implementations = "deny"
+
+[lints.clippy]
+absolute_paths = "warn"
+allow_attributes = "deny"
+allow_attributes_without_reason = "deny"
+arbitrary_source_item_ordering = "deny"
+cast_lossless = "allow"
+cast_possible_truncation = "allow"
+cast_precision_loss = "allow"
+cast_sign_loss = "allow"
+cfg_not_test = "deny"
+clone_on_ref_ptr = "deny"
+create_dir = "deny"
+dbg_macro = "warn"
+disallowed_script_idents = "deny"
+error_impl_error = "deny"
+filetype_is_file = "deny"
+infinite_loop = "deny"
+missing_errors_doc = "allow"
+mutex_atomic = "deny"
+mutex_integer = "deny"
+nursery = { level = "warn", priority = -1 }
+panic_in_result_fn = "deny"
+pathbuf_init_then_push = "deny"
+pedantic = { level = "warn", priority = -1 }
+precedence_bits = "deny"
+rc_mutex = "deny"
+redundant_test_prefix = "deny"
+redundant_type_annotations = "deny"
+same_name_method = "deny"
+self_named_module_files = "deny"
+string_lit_chars_any = "deny"
+string_slice = "deny"
+struct_excessive_bools = "allow"
+tests_outside_test_module = "deny"
+todo = "warn"
+undocumented_unsafe_blocks = "deny"
+unimplemented = "warn"
+unnecessary_safety_comment = "deny"
+unnecessary_safety_doc = "deny"
+unwrap_used = "warn"
