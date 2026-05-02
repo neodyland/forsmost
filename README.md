@@ -1,5 +1,10 @@
 # forsmost
 
+[![Crates.io](https://img.shields.io/crates/v/forsmost.svg)](https://crates.io/crates/forsmost)
+[![Documentation](https://docs.rs/forsmost/badge.svg)](https://docs.rs/forsmost)
+[![CI](https://github.com/neodyland/forsmost/actions/workflows/ci.yml/badge.svg)](https://github.com/neodyland/forsmost/actions/workflows/ci.yml)
+[![License: MIT OR Apache-2.0](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue.svg)](#license)
+
 `forsmost` is a Rust implementation of Foremost-style file carving. It scans an
 input stream or disk image for configured file signatures, writes recovered
 files into type-specific output directories, and records an `audit.txt` report.
